@@ -9,7 +9,11 @@ public class LevelManager : MonoBehaviour
     public GameObject mainShipOriginal;
     public GameObject mainGroupOriginal;
 
-    private Simple_enemy_group currentGroup;
+    public GameObject KamGroupOriginal;
+
+    private Base_Group currentGroup;
+
+    private GroupType [] levelGroupTypes = {GroupType.Kamikadze};
     private int groupCount = 0;
 
     Vector3 StartPosition = new Vector3(0, -4, 0);
@@ -29,7 +33,7 @@ public class LevelManager : MonoBehaviour
     {
      if(currentGroup != null && currentGroup.isAlive != false)
         if(currentGroup.isAlive == false){
-            if(groupCount ==5){
+            if(groupCount == levelGroupTypes.Length){
                 SceneManager.LoadSceneAsync(SceneIDS.winSceneID);
             } else {
              Destroy(currentGroup.gameObject);
